@@ -50,8 +50,10 @@
       options = "--delete-older-than 14d";
     };
 
-    settings.trusted-users = [ "root" "user" ];
-
+    settings = {
+      trusted-users = [ "root" "user" ];
+      experimental-features = "nix-command flakes";
+    };
   };
 
   # Set your time zone.
