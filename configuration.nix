@@ -217,6 +217,8 @@
     hyprshot
     keepassxc
     kitty
+    gnumake
+    cargo
     lazygit
     lua
     luarocks
