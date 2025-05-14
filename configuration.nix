@@ -205,7 +205,6 @@
     brave
     btop
     cifs-utils
-    cliphist
     dig
     docker-buildx
     fd
@@ -223,9 +222,10 @@
     luarocks
     mako
     mullvad-browser
+    copyq
     # mullvad-vpn
     neofetch
-    neovim-unwrapped
+    neovim
     nodejs_24
     obsidian
     python3
