@@ -101,11 +101,24 @@
 
     # Enable the X11 windowing system.
     xserver.enable = true;
+    displayManager.defaultSession = "none+i3";
+
+    # xserver.desktopManager.default = "none";
+    # xserver.displayManager.lightdm.enable = true;
 
     # Enable the GNOME Desktop Environment.
     xserver = {
       displayManager.gdm.enable = true;
       # desktopManager.gnome.enable = true;
+      desktopManager.xterm.enable = false;
+      windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu #application launcher most people use
+        i3status # gives you the default i3 status bar
+        i3lock #default i3 screen locker
+     ];
+    };
     };
 
     # Configure keymap in X11
@@ -147,6 +160,31 @@
   };
 
   programs = {
+    # Try to fix common nix issue about linker
+    # nix-ld = {
+    #   enable = true;
+    #   libraries = with pkgs; [
+    #     stdenv.cc.cc
+    #     acl
+    #     attr
+    #     bzip2
+    #     curl
+    #     expat
+    #     fuse3
+    #     icu
+    #     libsodium
+    #     libssh
+    #     libxml2
+    #     nss
+    #     openssl
+    #     systemd
+    #     util-linux
+    #     xz
+    #     zlib
+    #     zstd
+    #   ];
+    # };
+
     # GNUPG
     gnupg.agent = {
       enable = true;
@@ -222,6 +260,7 @@
     lazygit
     lua
     luarocks
+    (pkgs.burpsuite.override { proEdition = true; })
     mako
     mullvad-browser
     copyq
@@ -244,6 +283,8 @@
     yazi
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
+
 
   system = {
     stateVersion = config.system.nixos.release; # Did you read the comment?
