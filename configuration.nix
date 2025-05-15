@@ -219,7 +219,7 @@
     description = "user";
     shell = pkgs.fish;
     extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers" ];
-    packages = with pkgs; [ vesktop nixpkgs-review gh ];
+    packages = with pkgs; [ vesktop nixpkgs-review gh xorg.xhost ];
   };
 
   # Allow unfree packages
