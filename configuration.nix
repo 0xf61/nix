@@ -47,7 +47,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 14d";
+      options = "--delete-older-than 7d";
     };
 
     settings = {
@@ -112,13 +112,13 @@
       # desktopManager.gnome.enable = true;
       desktopManager.xterm.enable = false;
       windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu #application launcher most people use
-        i3status # gives you the default i3 status bar
-        i3lock #default i3 screen locker
-     ];
-    };
+        enable = true;
+        extraPackages = with pkgs; [
+          dmenu # application launcher most people use
+          i3status # gives you the default i3 status bar
+          i3lock # default i3 screen locker
+        ];
+      };
     };
 
     # Configure keymap in X11
@@ -283,8 +283,8 @@
     yazi
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
-
+  environment.pathsToLink =
+    [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw
 
   system = {
     stateVersion = config.system.nixos.release; # Did you read the comment?
