@@ -161,29 +161,29 @@
 
   programs = {
     # Try to fix common nix issue about linker
-    # nix-ld = {
-    #   enable = true;
-    #   libraries = with pkgs; [
-    #     stdenv.cc.cc
-    #     acl
-    #     attr
-    #     bzip2
-    #     curl
-    #     expat
-    #     fuse3
-    #     icu
-    #     libsodium
-    #     libssh
-    #     libxml2
-    #     nss
-    #     openssl
-    #     systemd
-    #     util-linux
-    #     xz
-    #     zlib
-    #     zstd
-    #   ];
-    # };
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc
+        acl
+        attr
+        bzip2
+        curl
+        expat
+        fuse3
+        icu
+        libsodium
+        libssh
+        libxml2
+        nss
+        openssl
+        systemd
+        util-linux
+        xz
+        zlib
+        zstd
+      ];
+    };
 
     # GNUPG
     gnupg.agent = {
