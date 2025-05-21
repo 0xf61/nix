@@ -17,15 +17,12 @@
       # };
 
       nixosModules = {
-        # This module is not meant to be imported by anyone but me
-        # it's just so I can easily avoid ../../../../../ mess
         system = import ./system;
 
         user = user.module;
 
         # place for my home brew modules
       } // import ./modules;
-
       nixosConfigurations = import ./hosts inputs;
 
     };
