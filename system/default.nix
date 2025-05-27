@@ -13,8 +13,6 @@
     ./kanata
   ];
 
-  module1.enable = true;
-
   environment.etc.machine-id.text = "b08dfa6083e7567a1921a715000001fb";
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.pathsToLink =

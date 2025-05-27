@@ -7,6 +7,6 @@ in {
       fzf gcc git gnumake go hyprlock hyprpaper hyprshot imv jq kitty lazygit
       lua luarocks mako mpv mullvad-browser neofetch neovim nmap nodejs_24
       python3 qrencode rclone restic ripgrep rsync signal-desktop tmux unzip
-      vesktop waybar wl-clipboard wofi xh yazi fish;
+      vesktop waybar wl-clipboard wofi xh yazi fish zed-editor;
   };
 }

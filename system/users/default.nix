@@ -4,7 +4,7 @@
       isNormalUser = true;
       description = "user";
       shell = pkgs.fish;
-      uid = 1337;
+      uid = 1000;
       extraGroups = [
         "adbusers"
         "audio"
@@ -16,6 +16,7 @@
         "plugdev"
         "power"
         "systemd-journal"
+        "uinput"
         "vboxusers"
         "video"
         "wheel"
