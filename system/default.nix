@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [
     ./audio
     ./boot
@@ -12,6 +12,8 @@
     ./virtualization
     ./kanata
   ];
+
+  module1.enable = true;
 
   environment.etc.machine-id.text = "b08dfa6083e7567a1921a715000001fb";
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -33,6 +35,7 @@
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
   };
 
   system = { autoUpgrade.enable = true; };
