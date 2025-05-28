@@ -1,1 +1,0 @@
-{ eqr = import ./eqr; }

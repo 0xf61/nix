@@ -2,6 +2,7 @@
   imports = [
     ./audio
     ./boot
+    ./desktop
     ./fonts
     ./net
     ./nix

@@ -2,10 +2,7 @@
   theme = import ./theme;
   module = { pkgs, ... }: {
     config = {
-      programs.hyprland = {
-        enable = true;
-        withUWSM = true;
-      };
+      # Hyprland configuration moved to system/desktop/hyprland.nix
       programs.direnv = {
         enable = false;
         enableFishIntegration = false;

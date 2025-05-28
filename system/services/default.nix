@@ -19,29 +19,7 @@
   # Udev
   services.udev.packages = [ pkgs.yubikey-personalization ];
 
-  services.displayManager.defaultSession = "hyprland-uwsm";
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    # Enable the GNOME Desktop Environment.
-    displayManager.gdm.enable = true;
-    desktopManager.xterm.enable = false;
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu # application launcher most people use
-        i3status # gives you the default i3 status bar
-        i3lock # default i3 screen locker
-      ];
-    };
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+  # Desktop environment and window manager settings moved to system/desktop modules
 
   # Enable ZerotierOne
   services.zerotierone = {
@@ -52,12 +30,5 @@
   # Disable CUPS to print documents.
   services.printing.enable = false;
 
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    listenAddresses = [{
-      addr = "192.168.193.6";
-      port = 22;
-    }];
-  };
+  # OpenSSH daemon is configured per-host in the host-specific configuration files
 }

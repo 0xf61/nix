@@ -18,4 +18,7 @@ let
         flake = self;
       };
     };
-in { eqr = mkHost "eqr" "x86_64-linux"; }
+in {
+  eqr = mkHost "eqr" "x86_64-linux";
+  lap = mkHost "lap" "x86_64-linux";
+}
