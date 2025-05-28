@@ -1,9 +1,12 @@
 {
   description = "NixEK";
 
-  inputs = { nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
+  inputs = { 
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+  };
 
-  outputs = { nixpkgs, ... }@inputs:
+  outputs = { nixpkgs, nixos-hardware, ... }@inputs:
     let user = import ./user;
     in {
       nixosModules = {
