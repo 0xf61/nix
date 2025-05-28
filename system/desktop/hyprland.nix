@@ -72,3 +72,4 @@
   # Hardware acceleration and graphics driver support
   hardware.graphics = { enable = true; };
 }
+
