@@ -1,6 +1,6 @@
 {
   theme = import ./theme;
-  module = { pkgs, ... }: {
+  module = { ... }: {
     config = {
       # Hyprland configuration moved to system/desktop/hyprland.nix
       programs.direnv = {

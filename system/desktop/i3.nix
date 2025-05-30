@@ -14,7 +14,7 @@
       xorg.xbacklight
       lxappearance
     ];
-    
+
     # Additional configuration can be added here
     package = pkgs.i3;
   };
@@ -23,18 +23,18 @@
   environment.systemPackages = with pkgs; [
     # Screen locking
     xss-lock
-    
+
     # Status bar utilities
     psmisc
     lm_sensors
-    
+
     # Other utilities
     xclip
     scrot
     flameshot
     pavucontrol
   ];
-  
+
   # This ensures proper font support in i3
   fonts.packages = with pkgs; [
     font-awesome
@@ -42,3 +42,4 @@
     nerd-fonts.jetbrains-mono
   ];
 }
+

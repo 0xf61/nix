@@ -1,8 +1,5 @@
-{ config, lib, pkgs, ... }: {
-  services.xserver.desktopManager.gnome = {
-    enable = true;
-    # You can add GNOME-specific configurations here
-  };
+{ lib, pkgs, ... }: {
+  services.desktopManager.gnome.enable = true;
 
   # Add common GNOME packages
   environment.systemPackages = with pkgs; [
@@ -20,6 +17,8 @@
     gnome-settings-daemon.enable = true;
   };
 
-  # Enable Wayland support for GNOME
-  services.xserver.displayManager.gdm.wayland = true;
+  # Disable GNOME keyring SSH to use GPG agent instead
+  security.pam.services.gdm.enableGnomeKeyring = lib.mkForce false;
+  security.pam.services.login.enableGnomeKeyring = lib.mkForce false;
+
 }

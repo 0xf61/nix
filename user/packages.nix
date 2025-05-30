@@ -5,8 +5,8 @@ in {
     inherit (pkgs)
     # CLI tools & utilities
       aria2 atuin btop cifs-utils copyq dig docker-buildx fd fzf git gnumake jq
-      lazygit neofetch nixd nil nmap qrencode rclone restic ripgrep rsync tmux unzip xh
-      yazi
+      lazygit neofetch nixd nil nmap qrencode rclone restic ripgrep rsync tmux
+      unzip xh yazi
 
       # Development tools
       cargo clang gcc go lua luarocks nodejs_24 python3

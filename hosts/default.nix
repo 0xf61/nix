@@ -28,9 +28,9 @@ in {
 
   lap = mkHost "lap" "x86_64-linux" [
     # Hardware configuration for Intel + NVIDIA laptop
-    nixos-hardware.nixosModules.common-cpu-intel
+    # nixos-hardware.nixosModules.common-cpu-intel
     # nixos-hardware.nixosModules.common-gpu-nvidia
-    nixos-hardware.nixosModules.common-pc-laptop
-    nixos-hardware.nixosModules.common-pc-laptop-ssd
+    # nixos-hardware.nixosModules.common-pc-laptop
+    # nixos-hardware.nixosModules.common-pc-laptop-ssd
   ];
 }

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ lib, ... }: {
   # Explicitly disable kanata for lap
   system.kanata.enable = false;
 
@@ -10,6 +10,8 @@
       port = 22;
     }];
   };
+
+  services.blueman.enable = true;
 
   # Enable Steam on the laptop
   programs.steam = {
@@ -26,14 +28,13 @@
       prime = {
         offload.enable = true;
         # Intel iGPU
-        intelBusId = "PCI:0:2:0";
+        intelBusId = "PCI:00:02:0";
         # NVIDIA GPU
-        nvidiaBusId = "PCI:1:0:0";
+        nvidiaBusId = "PCI:01:00:0";
       };
-      # Use the latest NVIDIA driver
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      # Set open to false for P1 Gen 5 GPU (if it's not Turing or newer RTX/GTX 16xx series)
-      open = false;
+      # # Use the latest NVIDIA driver
+      # package = config.boot.kernelPackages.nvidiaPackages.stable;
+      open = true;
       powerManagement = {
         enable = true;
         finegrained = true;
@@ -44,12 +45,6 @@
     graphics = {
       enable = true;
       enable32Bit = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        vaapiIntel
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
     };
     # Enable CPU frequency scaling
     cpu.intel.updateMicrocode = true;
@@ -69,9 +64,11 @@
   # Explicitly disable power-profiles-daemon to avoid conflict with TLP
   services.power-profiles-daemon.enable = false;
 
-  # Enable hardware video acceleration
-  nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-  };
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  # # Enable hardware video acceleration
+  # nixpkgs.config.packageOverrides = pkgs: {
+  #   vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  # };
 
 }
