@@ -5,6 +5,11 @@
   system.kanata.enable = false;
   services.blueman.enable = true;
 
+  # Enable multiple desktop environments
+  desktop.hyprland.enable = true;
+  desktop.gnome.enable = true;
+  desktop.defaultSession = "hyprland";
+
   services.openssh = {
     enable = true;
     listenAddresses = [{

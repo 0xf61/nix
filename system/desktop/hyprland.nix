@@ -1,5 +1,5 @@
 { lib, config, pkgs, ... }: {
-  config = lib.mkIf (config.desktop.enable && config.desktop.session == "hyprland") {
+  config = lib.mkIf (config.desktop.enable && config.desktop.hyprland.enable) {
     # Enable Hyprland in NixOS
     programs.hyprland = {
       enable = true;
@@ -9,7 +9,6 @@
 
     # Display manager configuration
     services.displayManager = {
-      defaultSession = "hyprland-uwsm";
       gdm = {
         enable = true;
         wayland = true;

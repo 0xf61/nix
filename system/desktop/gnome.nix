@@ -1,5 +1,5 @@
 { lib, config, pkgs, ... }: {
-  config = lib.mkIf (config.desktop.enable && config.desktop.session == "gnome") {
+  config = lib.mkIf (config.desktop.enable && config.desktop.gnome.enable) {
     services.desktopManager.gnome.enable = true;
 
     # Add common GNOME packages

@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: {
-  config = lib.mkIf (config.desktop.enable && config.desktop.session == "i3") {
+  config = lib.mkIf (config.desktop.enable && config.desktop.i3.enable) {
     services.xserver.windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
@@ -44,4 +44,3 @@
     ];
   };
 }
-
