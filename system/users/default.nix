@@ -26,25 +26,6 @@
     };
   };
 
-  # security = {
-  #   sudo = {
-  #     enable = true;
-  #     extraRules = [{
-  #       commands = builtins.map (command: {
-  #         command = "/run/current-system/sw/bin/${command}";
-  #         options = [ "NOPASSWD" ];
-  #       }) [
-  #         "poweroff"
-  #         "reboot"
-  #         "nixos-rebuild"
-  #         "nix-env"
-  #         "bandwhich"
-  #         "systemctl"
-  #       ];
-  #       groups = [ "wheel" ];
-  #     }];
-  #   };
-  #
-  # };
+
 }
 

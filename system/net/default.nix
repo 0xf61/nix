@@ -1,7 +1,6 @@
 { ... }: {
   networking = {
-
-    # Enable networking
+    # Network management
     networkmanager = {
       enable = true;
       unmanaged = [ "docker0" "rndis0" ];
@@ -11,21 +10,18 @@
       };
     };
 
-    # Who needs IPv6 / me for netbird :(
+    # IPv6 enabled for netbird
     enableIPv6 = true;
 
+    # DNS servers
     nameservers = [ "94.140.14.14" "94.140.14.15" ];
 
-    # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    firewall.enable = false;
-    firewall.trustedInterfaces = [ "zth6rnw6il" ];
+    # Firewall configuration
     firewall = {
+      enable = false;
+      trustedInterfaces = [ "zth6rnw6il" ];
       allowPing = false;
       logReversePathDrops = true;
     };
-
   };
 }

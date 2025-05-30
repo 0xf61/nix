@@ -1,36 +1,24 @@
-{  ... }: {
-  # Central place for all environment variables
+{ ... }: {
   environment = {
-    # Path configuration
-    pathsToLink = [
-      "/libexec" # Links /libexec from derivations to /run/current-system/sw
-    ];
+    pathsToLink = [ "/libexec" ];
 
-    # General environment variables
     sessionVariables = {
-      # For Wayland applications
+      # Wayland support
       NIXOS_OZONE_WL = "1";
-
-      # For applications using SDL to prefer Wayland
       SDL_VIDEODRIVER = "wayland";
-
-      # For Qt applications
       QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-
-      # For ElementaryOS/Pantheon applications
       CLUTTER_BACKEND = "wayland";
-
-      # For XDG Desktop Portal
+      
+      # Desktop session
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
-
+      
       # Font rendering
-      FREETYPE_PROPERTIES =
-        "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
-
-      # SSH authentication via GPG agent
+      FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+      
+      # SSH via GPG agent
       SSH_AUTH_SOCK = "/run/user/1000/gnupg/S.gpg-agent.ssh";
     };
   };

@@ -1,10 +1,10 @@
 { config, ... }: {
   imports = [
-    ./audio
     ./boot
     ./desktop
     ./environment
-    ./fonts
+    ./kanata
+    ./media
     ./net
     ./nix
     ./programs
@@ -12,8 +12,11 @@
     ./services
     ./users
     ./virtualization
-    ./kanata
   ];
+
+  # Enable desktop environment
+  desktop.enable = true;
+  desktop.session = "hyprland";
 
   environment.etc.machine-id.text = "b08dfa6083e7567a1921a715000001fb";
 
