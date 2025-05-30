@@ -48,7 +48,35 @@
     };
   };
 
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      # C/C++ toolchain libraries
+      stdenv.cc.cc.lib
+      glibc
+
+      # Common system libraries
+      openssl
+      curl
+      libz
+      zlib
+
+      # Development libraries
+      libgcc
+
+      # Additional common dependencies
+      expat
+      fontconfig
+      freetype
+      libGL
+      libxkbcommon
+      xorg.libX11
+      xorg.libXcursor
+      xorg.libXi
+      xorg.libXrandr
+    ];
+  };
+
   programs.nh = {
     enable = true;
     clean.enable = true;
