@@ -29,7 +29,10 @@
       # Font rendering
       FREETYPE_PROPERTIES =
         "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+
+      # Gnome keyring for secrets management
+      GNOME_KEYRING_CONTROL = "/run/user/1000/keyring";
+      SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
     };
   };
 }
-
