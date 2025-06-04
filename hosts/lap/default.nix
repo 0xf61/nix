@@ -1,6 +1,9 @@
 { lib, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
+  # Hostname configuration
+  networking.hostName = "lap";
+
   # Host-specific configuration
   system.kanata.enable = false;
   services.blueman.enable = true;

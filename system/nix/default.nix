@@ -1,21 +1,15 @@
 { pkgs, ... }: {
   nix = {
-    # gc kills ssds
     gc.automatic = false;
-
-    # nix but cooler
     package = pkgs.lix;
 
-    # Make builds run with low priority so my system stays responsive
     daemonCPUSchedPolicy = "idle";
     daemonIOSchedClass = "idle";
 
     settings = {
       flake-registry = "/etc/nix/registry.json";
       auto-optimise-store = true;
-      # use binary cache, its not gentoo
       builders-use-substitutes = true;
-      # allow sudo users to mark the following values as trusted
       allowed-users = [ "@wheel" ];
       trusted-users = [ "@wheel" ];
       commit-lockfile-summary = "chore: Update flake.lock";
@@ -26,12 +20,10 @@
 
       sandbox = true;
       max-jobs = "auto";
-      # continue building derivations if one fails
       keep-going = true;
       log-lines = 20;
-      extra-experimental-features = [ "flakes" "nix-command" ];
+      extra-experimental-features = [ "flakes" "nix-command" "repl-flake" ];
 
-      # Use binary caches for faster builds
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
@@ -84,11 +76,8 @@
     flake = "/home/user/git/nix";
   };
 
-  # WE DONT WANT TO BUILD STUFF ON TMPFS
-  # ITS NOT A GOOD IDEA
   systemd.services.nix-daemon = { environment.TMPDIR = "/var/tmp"; };
 
-  # this makes rebuilds little faster
   system.switch = {
     enable = false;
     enableNg = true;

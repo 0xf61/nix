@@ -13,12 +13,4 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # Font configuration
-  fonts.packages = with pkgs; [
-    nerd-fonts.hack
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-    font-awesome
-  ];
 }

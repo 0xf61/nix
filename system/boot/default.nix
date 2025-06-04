@@ -10,7 +10,6 @@
         configurationLimit = 10;
         editor = false;
       };
-      # spam space to get to boot menu
       timeout = 0;
       efi.canTouchEfiVariables = true;
     };

@@ -1,8 +1,17 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
+  programs.fish.enable = true;
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.hack
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    font-awesome
+  ];
+
   environment.systemPackages = with pkgs; [
     # System utilities
     btop
-    neofetch
+    fastfetch
     tmux
     unzip
 
@@ -25,7 +34,6 @@
     python3
 
     # File management
-    copyq
     fd
     fzf
     jq
@@ -39,22 +47,33 @@
 
     # Terminal & editors
     atuin
-    kitty
     neovim
     nixd
     nil
 
-    # GUI applications
+    # Cross-platform GUI applications
+    alacritty
     brave
-    imv
+    firefox
     mpv
+    kitty
+
+    # Utilities
+    docker-buildx
+    gh
+  ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    raycast
+    zed-editor
+    iterm2
+    discord
+  ] ++ lib.optionals pkgs.stdenv.isLinux [
+    cifs-utils
+    copyq
+    imv
     mullvad-browser
     signal-desktop
     vesktop
+    xorg.xhost
     zed-editor-fhs
-
-    # Utilities
-    cifs-utils
-    docker-buildx
   ];
 }

@@ -4,38 +4,29 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, ... }:
-    let
-      # Common configuration modules
-      commonModules = [
-        ./system
-        ./user
-      ];
-
-      # Helper function to create host configurations
-      mkHost = name: system: extraModules:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            { networking.hostName = name; }
-            ./hosts/${name}
-          ] ++ commonModules ++ extraModules;
-
-          specialArgs = {
-            inherit self nixos-hardware;
-            flake = self;
-          };
-        };
-    in {
-      nixosConfigurations = {
-        eqr = mkHost "eqr" "x86_64-linux" [
+  outputs = { nixpkgs, nixos-hardware, nix-darwin, ... }: {
+    nixosConfigurations = {
+      eqr = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/eqr
+          ./system
+          ./user/packages.nix
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-pc-ssd
         ];
+      };
 
-        lap = mkHost "lap" "x86_64-linux" [
+      lap = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/lap
+          ./system
+          ./user/packages.nix
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-gpu-nvidia
           nixos-hardware.nixosModules.common-pc-laptop
@@ -43,4 +34,15 @@
         ];
       };
     };
+
+    darwinConfigurations = {
+      sc20 = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./hosts/sc20
+          ./user/packages.nix
+        ];
+      };
+    };
+  };
 }
