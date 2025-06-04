@@ -15,7 +15,7 @@
     # macOS Dock configuration
     dock = {
       autohide = true;  # Hide dock when not in use to save screen space
-      persistent-apps = [ 
+      persistent-apps = [
         "${pkgs.brave}/Applications/Brave Browser.app"  # Pin Brave to dock
         "${pkgs.iterm2}/Applications/iTerm.app"  # Pin iTerm2 to dock
       ];
@@ -51,8 +51,8 @@
       AppleICUForce24HourTime = true;  # Use 24-hour time format (14:30 instead of 2:30 PM)
       AppleInterfaceStyle = "Dark";  # Use dark mode system-wide
       AppleShowAllFiles = true;  # Show hidden files in Finder
-      KeyRepeat = 2;  # Fast key repeat rate when holding down keys
-      InitialKeyRepeat = 1;  # Short delay before key repeat starts
+      KeyRepeat = 3;  # Fast key repeat rate when holding down keys
+      InitialKeyRepeat = 15;  # Short delay before key repeat starts
       NSAutomaticCapitalizationEnabled = false;  # Don't auto-capitalize text
       NSDocumentSaveNewDocumentsToCloud = false;  # Don't default to saving to iCloud
       NSWindowShouldDragOnGesture = true;  # Allow dragging windows by clicking anywhere (with modifier)
