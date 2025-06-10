@@ -64,8 +64,6 @@
   ] ++ lib.optionals pkgs.stdenv.isDarwin [
     raycast
     zed-editor
-    openvpn
-    openconnect
     iterm2
     discord
   ] ++ lib.optionals pkgs.stdenv.isLinux [
