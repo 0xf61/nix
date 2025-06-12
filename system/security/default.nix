@@ -23,19 +23,20 @@
   fileSystems."/boot".options = [ "nodev" "nosuid" "noexec" ];
 
   # Kernel module blacklist grouped by category
+  # Blacklisting unused or potentially insecure kernel modules reduces the attack surface.
   boot.blacklistedKernelModules = [
-    # Network protocols (rare/insecure)
+    # Network protocols (rarely used, potential attack surface)
     "ax25" "netrom" "rose"
-    
-    # Filesystems (old/rare/network)
+
+    # Filesystems (old, rarely used, or potentially insecure network filesystems)
     "adfs" "affs" "bfs" "befs" "cramfs" "efs" "erofs" "exofs" "freevxfs"
     "f2fs" "gfs2" "hfs" "hfsplus" "hpfs" "jfs" "jffs2" "minix" "nilfs2"
     "omfs" "qnx4" "qnx6" "squashfs" "sysv" "udf"
-    
-    # Network filesystems
+
+    # Network filesystems (often handled better via userspace tools, can be a security risk)
     "cifs" "nfs" "nfsv3" "nfsv4" "ksmbd"
-    
-    # Media/debugging
+
+    # Media/debugging modules (like vivid, often unnecessary and can be a source of vulnerabilities)
     "vivid"
   ];
 
