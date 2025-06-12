@@ -57,14 +57,15 @@
     firefox
     mpv
     kitty
+    google-chrome
 
     # Utilities
     docker-buildx
     gh
   ] ++ lib.optionals pkgs.stdenv.isDarwin [
     raycast
-    zed-editor
     iterm2
+    vscode-fhs
     discord
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     cifs-utils
