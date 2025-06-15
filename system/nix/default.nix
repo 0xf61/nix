@@ -70,14 +70,12 @@
   };
 
   # Enable nh for managing generations and cleaning on Linux systems
-  lib.mkIf pkgs.stdenv.isLinux {
-    programs.nh = {
-      enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 4d --keep 3";
-      flake = "/home/user/git/nix"; # Consider making this path relative or a variable
-    };
-  }; # Added semicolon
+  programs.nh = lib.mkIf pkgs.stdenv.isLinux {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/user/git/nix"; # Consider making this path relative or a variable
+  };
 
   systemd.services.nix-daemon = { environment.TMPDIR = "/var/tmp"; };
 

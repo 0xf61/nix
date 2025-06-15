@@ -65,7 +65,7 @@
   ] ++ lib.optionals pkgs.stdenv.isDarwin [
     raycast
     iterm2
-    vscode-fhs
+    vscode
     discord
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     cifs-utils

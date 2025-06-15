@@ -17,7 +17,7 @@
       autohide = true;  # Hide dock when not in use to save screen space
       persistent-apps = [
         "${pkgs.brave}/Applications/Brave Browser.app"  # Pin Brave to dock
-        "${pkgs.iterm2}/Applications/iTerm.app"  # Pin iTerm2 to dock
+        "${pkgs.iterm2}/Applications/iTerm2.app"  # Pin iTerm2 to dock
       ];
       show-recents = false;  # Don't show recently used apps in dock
       tilesize = 48;  # Set dock icon size (default is 64)
