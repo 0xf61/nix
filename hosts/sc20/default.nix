@@ -48,6 +48,7 @@
 
     # Global system preferences that affect all apps
     NSGlobalDomain = {
+      ApplePressAndHoldEnabled = false; # Disable press-and-hold for special characters
       AppleICUForce24HourTime = true;  # Use 24-hour time format (14:30 instead of 2:30 PM)
       AppleInterfaceStyle = "Dark";  # Use dark mode system-wide
       AppleShowAllFiles = true;  # Show hidden files in Finder
