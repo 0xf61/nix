@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ config, lib, pkgs, ... }: {
   programs.fish.enable = true;
 
   fonts.packages = with pkgs; [

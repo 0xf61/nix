@@ -8,41 +8,52 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-hardware, nix-darwin, ... }: {
-    nixosConfigurations = {
-      eqr = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/eqr
-          ./system
-          ./user/packages.nix
-          nixos-hardware.nixosModules.common-cpu-amd
-          nixos-hardware.nixosModules.common-pc-ssd
-        ];
+  outputs = { self, nixpkgs, nixos-hardware, nix-darwin, ... }@inputs:
+    let
+      inherit (self) outputs;
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
+      nixosModules = [
+        ./system
+        ./user/packages.nix
+      ];
+    in
+    {
+      nixosConfigurations = {
+        eqr = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs outputs; };
+          modules = nixosModules ++ [
+            ./hosts/eqr
+            nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.common-pc-ssd
+          ];
+        };
+
+        lap = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs outputs; };
+          modules = nixosModules ++ [
+            ./hosts/lap
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-gpu-nvidia
+            nixos-hardware.nixosModules.common-pc-laptop
+            nixos-hardware.nixosModules.common-pc-laptop-ssd
+          ];
+        };
       };
 
-      lap = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/lap
-          ./system
-          ./user/packages.nix
-          nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-gpu-nvidia
-          nixos-hardware.nixosModules.common-pc-laptop
-          nixos-hardware.nixosModules.common-pc-laptop-ssd
-        ];
+      darwinConfigurations = {
+        sc20 = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = { inherit inputs outputs; pkgs = nixpkgs.legacyPackages.aarch64-darwin; };
+          modules = [
+            ./hosts/sc20
+            ./user/packages.nix
+          ];
+        };
       };
     };
-
-    darwinConfigurations = {
-      sc20 = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          ./hosts/sc20
-          ./user/packages.nix
-        ];
-      };
-    };
-  };
 }
