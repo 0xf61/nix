@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ lib, pkgs, ... }: {
   programs.fish.enable = true;
 
   fonts.packages = with pkgs; [
@@ -7,6 +7,7 @@
     nerd-fonts.jetbrains-mono
     font-awesome
   ];
+  
 
   environment.systemPackages = with pkgs; [
     # System utilities

@@ -8,9 +8,8 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, nix-darwin, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-hardware, nix-darwin }:
     let
-      inherit (self) outputs;
       nixosModules = [
         ./system
         ./user/packages.nix
@@ -20,7 +19,6 @@
       nixosConfigurations = {
         eqr = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs outputs nixpkgs; lib = nixpkgs.lib; };
           modules = nixosModules ++ [
             ./hosts/eqr
             nixos-hardware.nixosModules.common-cpu-amd
@@ -30,7 +28,6 @@
 
         lap = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs outputs nixpkgs; lib = nixpkgs.lib; };
           modules = nixosModules ++ [
             ./hosts/lap
             nixos-hardware.nixosModules.common-cpu-intel
@@ -44,7 +41,10 @@
       darwinConfigurations = {
         sc20 = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          specialArgs = { inherit inputs outputs nixpkgs; pkgs = nixpkgs.legacyPackages.aarch64-darwin; lib = nixpkgs.lib; };
+          pkgs = import nixpkgs { 
+            system = "aarch64-darwin"; 
+            config.allowUnfree = true; 
+          };
           modules = [
             ./hosts/sc20
             ./user/packages.nix

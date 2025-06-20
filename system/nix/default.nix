@@ -5,6 +5,15 @@
 
     daemonCPUSchedPolicy = "idle";
     daemonIOSchedClass = "idle";
+  
+  # Enable nh for managing generations and cleaning on Linux systems
+  programs.nh =  {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "~/git/nix"; # Consider making this path relative or a variable
+  };
+
 
     settings = {
       flake-registry = "/etc/nix/registry.json";
@@ -15,7 +24,7 @@
       commit-lockfile-summary = "chore: Update flake.lock";
       accept-flake-config = true;
       keep-derivations = true;
-      keep-outputs = true;
+      keep-outputs = false;
       warn-dirty = false;
 
       sandbox = true;
@@ -67,14 +76,6 @@
       xorg.libXi
       xorg.libXrandr
     ];
-  };
-
-  # Enable nh for managing generations and cleaning on Linux systems
-  programs.nh = lib.mkIf pkgs.stdenv.isLinux {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/user/git/nix"; # Consider making this path relative or a variable
   };
 
   systemd.services.nix-daemon = { environment.TMPDIR = "/var/tmp"; };

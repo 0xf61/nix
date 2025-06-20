@@ -1,6 +1,4 @@
-{ pkgs, ... }: {
-  # Allow installation of proprietary software (like Brave browser, etc.)
-  nixpkgs.config.allowUnfree = true;
+{ pkgs, lib, ... }: {
 
   # Enable modern Nix features (flakes and new CLI commands)
   nix.settings.experimental-features = "nix-command flakes";

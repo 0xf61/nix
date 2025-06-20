@@ -10,6 +10,10 @@
     ./virtualization
   ];
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "google-chrome"
+  ];
+
   desktop.enable = true;
 
   environment = {
@@ -22,7 +26,6 @@
   };
 
   time.timeZone = "Europe/Istanbul";
-  security.rtkit.enable = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -44,7 +47,6 @@
       dnssec = "false";
       dnsovertls = "false";
     };
-    libinput.enable = true;
     netbird = {
       enable = true;
       server.domain = "https://guf.n3rv.org";
