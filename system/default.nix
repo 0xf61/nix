@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [
     ./boot
     ./desktop
@@ -86,5 +86,5 @@
   };
 
   system.autoUpgrade.enable = true;
-  system.stateVersion = config.system.nixos.release;
+  system.stateVersion = "24.05";
 }

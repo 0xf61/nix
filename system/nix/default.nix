@@ -1,19 +1,10 @@
-{ pkgs, lib, ... }: {
+{ pkgs, ... }: {
   nix = {
     gc.automatic = false;
     package = pkgs.lix;
 
     daemonCPUSchedPolicy = "idle";
     daemonIOSchedClass = "idle";
-  
-  # Enable nh for managing generations and cleaning on Linux systems
-  programs.nh =  {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "~/git/nix"; # Consider making this path relative or a variable
-  };
-
 
     settings = {
       flake-registry = "/etc/nix/registry.json";
@@ -49,6 +40,14 @@
     };
   };
 
+  # Enable nh for managing generations and cleaning on Linux systems
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "$HOME/git/nix";
+  };
+
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
@@ -81,8 +80,7 @@
   systemd.services.nix-daemon = { environment.TMPDIR = "/var/tmp"; };
 
   system.switch = {
-    enable = false;
-    enableNg = true;
+    enable = true;
   };
 
   nixpkgs = {

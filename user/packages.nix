@@ -7,7 +7,7 @@
     nerd-fonts.jetbrains-mono
     font-awesome
   ];
-  
+
 
   environment.systemPackages = with pkgs; [
     # System utilities
@@ -65,7 +65,6 @@
     gh
   ] ++ lib.optionals pkgs.stdenv.isDarwin [
     raycast
-    iterm2
     vscode
     discord
   ] ++ lib.optionals pkgs.stdenv.isLinux [
