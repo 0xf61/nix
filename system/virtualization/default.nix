@@ -6,10 +6,10 @@
     virtualbox = {
       host.enable = true;
       host.enableExtensionPack = true;
-      guest.enable = true;
-      guest.clipboard = true;
-      guest.vboxsf = true;
-      guest.dragAndDrop = true;
+      #guest.enable = true;
+      #guest.clipboard = true;
+      #guest.vboxsf = true;
+      #guest.dragAndDrop = true;
     };
   };
 }
