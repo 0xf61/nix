@@ -77,7 +77,7 @@
       "power"
       "systemd-journal"
       "uinput"
-      "vboxusers"
+      "libvirtd"
       "video"
       "wheel"
       "wireshark"
