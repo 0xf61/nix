@@ -67,6 +67,7 @@
     raycast
     vscode
     discord
+    iterm2
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     cifs-utils
     copyq
