@@ -8,74 +8,71 @@
     font-awesome
   ];
 
+  environment.systemPackages = with pkgs;
+    [
+      # System utilities
+      btop
+      fastfetch
+      tmux
+      unzip
 
-  environment.systemPackages = with pkgs; [
-    # System utilities
-    btop
-    fastfetch
-    tmux
-    unzip
+      # Network tools
+      aria2
+      dig
+      nmap
+      rsync
 
-    # Network tools
-    aria2
-    dig
-    nmap
-    rsync
+      # Development tools
+      cargo
+      clang
+      gcc
+      git
+      gnumake
+      go
+      lua
+      luarocks
+      nodejs_24
+      python3
 
-    # Development tools
-    cargo
-    clang
-    gcc
-    git
-    gnumake
-    go
-    lua
-    luarocks
-    nodejs_24
-    python3
+      # File management
+      fd
+      fzf
+      jq
+      lazygit
+      qrencode
+      rclone
+      restic
+      ripgrep
+      xh
+      yazi
 
-    # File management
-    fd
-    fzf
-    jq
-    lazygit
-    qrencode
-    rclone
-    restic
-    ripgrep
-    xh
-    yazi
+      # Terminal & editors
+      atuin
+      neovim
+      nixd
+      nil
 
-    # Terminal & editors
-    atuin
-    neovim
-    nixd
-    nil
+      # Cross-platform GUI applications
+      alacritty
+      brave
+      firefox
+      mpv
+      kitty
+      google-chrome
 
-    # Cross-platform GUI applications
-    alacritty
-    brave
-    firefox
-    mpv
-    kitty
-    google-chrome
-
-    # Utilities
-    docker-buildx
-    gh
-  ] ++ lib.optionals pkgs.stdenv.isDarwin [
-    raycast
-    vscode
-    discord
-    iterm2
-  ] ++ lib.optionals pkgs.stdenv.isLinux [
-    cifs-utils
-    copyq
-    imv
-    mullvad-browser
-    signal-desktop
-    vesktop
-    xorg.xhost
-    zed-editor-fhs
-  ];
+      # Utilities
+      docker-buildx
+      gh
+    ] ++ lib.optionals pkgs.stdenv.isDarwin [ raycast vscode discord iterm2 ]
+    ++ lib.optionals pkgs.stdenv.isLinux [
+      cifs-utils
+      copyq
+      imv
+      mullvad-browser
+      signal-desktop
+      vesktop
+      xorg.xhost
+      vscode-fhs
+      zed-editor-fhs
+    ];
 }
