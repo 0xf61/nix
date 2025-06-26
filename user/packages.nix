@@ -25,7 +25,9 @@
       # Development tools
       cargo
       clang
+      docker-buildx
       gcc
+      gh
       git
       gnumake
       go
@@ -49,21 +51,20 @@
       # Terminal & editors
       atuin
       neovim
-      nixd
       nil
+      nixd
+      nixfmt
 
       # Cross-platform GUI applications
       alacritty
       brave
       firefox
-      mpv
-      kitty
       google-chrome
+      kitty
+      mpv
+      rustdesk
 
-      # Utilities
-      docker-buildx
-      gh
-    ] ++ lib.optionals pkgs.stdenv.isDarwin [ raycast vscode discord iterm2 ]
+   ] ++ lib.optionals pkgs.stdenv.isDarwin [ raycast vscode discord iterm2 ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       cifs-utils
       copyq
@@ -71,8 +72,8 @@
       mullvad-browser
       signal-desktop
       vesktop
-      xorg.xhost
       vscode-fhs
+      xorg.xhost
       zed-editor-fhs
-    ];
+   ];
 }
