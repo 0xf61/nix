@@ -8,7 +8,6 @@
   programs.steam.enable = lib.mkForce false;
 
   # Enable only Gnome desktop environment
-  desktop.hyprland.enable = false;
   desktop.gnome.enable = true;
   desktop.defaultSession = "gnome";
 

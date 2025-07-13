@@ -8,9 +8,8 @@
   services.blueman.enable = true;
 
   # Enable multiple desktop environments
-  desktop.hyprland.enable = true;
   desktop.gnome.enable = true;
-  desktop.defaultSession = "hyprland";
+  desktop.defaultSession = "gnome";
 
   services.openssh = {
     enable = true;
