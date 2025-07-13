@@ -5,13 +5,12 @@
   networking.hostName = "eqr";
 
   # Host-specific configuration
-  system.kanata.enable = true;
   programs.steam.enable = lib.mkForce false;
 
-  # Enable only Hyprland desktop environment
-  desktop.hyprland.enable = true;
-  desktop.gnome.enable = false;
-  desktop.defaultSession = "hyprland";
+  # Enable only Gnome desktop environment
+  desktop.hyprland.enable = false;
+  desktop.gnome.enable = true;
+  desktop.defaultSession = "gnome";
 
   services.openssh = {
     enable = true;

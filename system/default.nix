@@ -2,7 +2,6 @@
   imports = [
     ./boot
     ./desktop
-    ./kanata
     ./media
     ./net
     ./nix

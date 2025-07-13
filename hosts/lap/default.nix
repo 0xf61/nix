@@ -5,7 +5,6 @@
   networking.hostName = "lap";
 
   # Host-specific configuration
-  system.kanata.enable = false;
   services.blueman.enable = true;
 
   # Enable multiple desktop environments
