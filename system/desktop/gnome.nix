@@ -1,6 +1,6 @@
 { lib, config, pkgs, ... }: {
   config = lib.mkIf (config.desktop.enable && config.desktop.gnome.enable) {
-    services.desktopManager.gnome.enable = true;
+    services.xserver.desktopManager.gnome.enable = true;
 
     # Add common GNOME packages
     environment.systemPackages = with pkgs; [

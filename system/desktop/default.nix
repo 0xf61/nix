@@ -27,7 +27,7 @@
     services.libinput.enable = true;
 
     # Enable specific desktop sessions based on individual options
-    services.desktopManager.gnome.enable = lib.mkDefault config.desktop.gnome.enable;
+    services.xserver.desktopManager.gnome.enable = lib.mkDefault config.desktop.gnome.enable;
 
     # Set default session for display manager
     services.displayManager.defaultSession = "gnome";

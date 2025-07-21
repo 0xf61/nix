@@ -6,7 +6,7 @@
   # Define external flake inputs
   inputs = {
     # Nixpkgs: The main Nix packages collection
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
     # NixOS Hardware: Common hardware configurations for NixOS
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     # Nix-Darwin: Module for managing macOS systems with Nix

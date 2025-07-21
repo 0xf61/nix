@@ -12,7 +12,6 @@
     [
       # System utilities
       btop
-      fastfetch
       tmux
       unzip
 
@@ -45,18 +44,14 @@
       rclone
       restic
       ripgrep
-      xh
-      yazi
 
       # Terminal & editors
       atuin
       neovim
       nil
       nixd
-      nixfmt
 
       # Cross-platform GUI applications
-      alacritty
       brave
       firefox
       google-chrome
@@ -67,7 +62,6 @@
       cifs-utils
       copyq
       imv
-      mullvad-browser
       signal-desktop
       vesktop
       vscode-fhs
