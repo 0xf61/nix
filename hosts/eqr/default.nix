@@ -18,4 +18,10 @@
       port = 22;
     }];
   };
+
+  services.kasmweb = {
+    enable = true;
+    listenPort = 1337;
+    listenAddress = "192.168.193.6";
+  };
 }
